@@ -1,21 +1,22 @@
 import React from 'react'
-import Spline from '@splinetool/react-spline'
 import { Apple, Play } from 'lucide-react'
 
 const Hero = () => {
   return (
     <section id="hero" className="relative min-h-[90svh] sm:min-h-[80vh] flex items-end bg-[#0b0c0f] overflow-hidden">
-      {/* Spline background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <Spline scene="https://prod.spline.design/cEecEwR6Ehj4iT8T/scene.splinecode" style={{ width: '100%', height: '100%' }} />
-      </div>
+      {/* Solid backdrop to guarantee no background text/artifacts */}
+      <div className="absolute inset-0 bg-[#0b0c0f]" aria-hidden />
 
-      {/* Global dim overlay */}
-      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
-      {/* Bottom gradient to fully mask background text behind CTAs */}
-      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+      {/* Ambient gradient accents (no external scenes) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b0c0f] via-[#0a0b0e] to-black opacity-90" aria-hidden />
+      <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-[#ff6a00]/10 blur-3xl" aria-hidden />
+      <div className="absolute -bottom-32 -right-24 h-80 w-80 rounded-full bg-sky-500/10 blur-3xl" aria-hidden />
 
-      <div className="relative z-10 max-w-screen-md mx-auto w-full px-4 py-12 pointer-events-auto">
+      {/* Top and bottom vignettes for depth */}
+      <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/60 to-transparent" aria-hidden />
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent" aria-hidden />
+
+      <div className="relative z-10 max-w-screen-md mx-auto w-full px-4 py-12">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">The Division Resurgence</h1>
         <p className="mt-2 text-base text-gray-300">A next-gen Tom Clancy looter shooter on mobile.</p>
 
