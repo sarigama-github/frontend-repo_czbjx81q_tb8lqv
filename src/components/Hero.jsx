@@ -1,5 +1,6 @@
 import React from 'react'
 import Spline from '@splinetool/react-spline'
+import { Apple, Play } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -9,8 +10,10 @@ const Hero = () => {
         <Spline scene="https://prod.spline.design/cEecEwR6Ehj4iT8T/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Dark overlay to increase contrast */}
-      <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
+      {/* Global dim overlay */}
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      {/* Bottom gradient to fully mask background text behind CTAs */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-screen-md mx-auto w-full px-4 py-12 pointer-events-auto">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">The Division Resurgence</h1>
@@ -21,11 +24,20 @@ const Hero = () => {
           <a href="#preregister" className="flex-1 inline-flex items-center justify-center rounded-lg border border-white/20 text-white font-semibold py-3 text-base active:scale-[0.98] transition-transform">Pre-register</a>
         </div>
 
-        <div className="mt-5 flex items-center gap-3">
-          <div className="h-10 w-28 bg-white/10 rounded-md"></div>
-          <div className="h-10 w-28 bg-white/10 rounded-md"></div>
+        {/* Store badges */}
+        <div className="mt-5 flex items-center justify-center gap-3">
+          <a href="#appstore" className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-colors">
+            <Apple className="h-5 w-5" />
+            <span className="text-sm font-medium">App Store</span>
+          </a>
+          <a href="#googleplay" className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-colors">
+            <Play className="h-5 w-5" />
+            <span className="text-sm font-medium">Google Play</span>
+          </a>
         </div>
-        <p className="mt-2 text-xs text-gray-400">Join millions of agents worldwide.</p>
+
+        {/* Support text centered under CTAs */}
+        <p className="mt-3 text-xs text-gray-400 text-center">Join millions of agents worldwide.</p>
       </div>
     </section>
   )
